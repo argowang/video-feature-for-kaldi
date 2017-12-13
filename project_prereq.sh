@@ -2,6 +2,8 @@
 
 sudo apt-get -y install build-essential
 git clone https://github.com/MrDoggie/video-feature-for-kaldi.git
+mv video-feature-for-kaldi/* .
+rm -rf video-feature-for-kaldi/
 git clone https://github.com/kaldi-asr/kaldi.git kaldi-trunk --origin golden
 sudo echo "deb http://dk.archive.ubuntu.com/ubuntu/ trusty main universe1
 deb http://dk.archive.ubuntu.com/ubuntu/ trusty-updates main universe" >> /etc/apt/sources.list
@@ -39,4 +41,5 @@ sudo ln -s /usr/bin/gcc-4.9 /usr/local/cuda/bin/gcc
 sudo ln -s /usr/bin/g++-4.9 /usr/local/cuda/bin/g++
 
 sudo apt-get install zip
-                                                 
+sudo apt-get install git virtualenv python-dev ocl-icd-opencl-dev libopencv-dev python-opencv ffmpeg
+chmod 777 data_processing.sh
