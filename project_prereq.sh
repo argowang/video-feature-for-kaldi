@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get -y install build-essential
+git clone https://github.com/MrDoggie/video-feature-for-kaldi.git
 git clone https://github.com/kaldi-asr/kaldi.git kaldi-trunk --origin golden
 sudo echo "deb http://dk.archive.ubuntu.com/ubuntu/ trusty main universe1
 deb http://dk.archive.ubuntu.com/ubuntu/ trusty-updates main universe" >> /etc/apt/sources.list
