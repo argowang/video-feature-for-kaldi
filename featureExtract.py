@@ -45,7 +45,7 @@ def main(argv):
 	print 'Writing vectors to "', outputfile
 
 	# setting cpu to extract feature
-	caffe.set_mode_cpu()
+	caffe.set_mode_gpu()
 	# Load in caffe model, set preprocessing parameters
 	net = caffe.Classifier(model_prototxt, model_trained,
 							mean=np.load(mean_path).mean(1).mean(1),

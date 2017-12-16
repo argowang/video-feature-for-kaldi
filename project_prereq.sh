@@ -10,6 +10,7 @@ wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 sudo apt-get install python2.7-dev
 sudo pip install numpy
+sudo apt-get install python-numpy 
 
 # install opencv
 cd ~; git clone https://github.com/Itseez/opencv.git; cd opencv; git checkout 3.0.0
@@ -40,7 +41,13 @@ export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler
 sudo apt-get install -y --no-install-recommends libboost-all-dev
+sudo pip install scikit-image
+sudo apt-get install python-matplotlib python-numpy python-pil python-scipy
+sudo apt-get install build-essential cython
+sudo apt-get install python-skimage
+sudo pip install protobuf
 
+# install caffe
 git clone https://github.com/BVLC/caffe
 cd caffe
 
@@ -55,7 +62,6 @@ make pycaffe -j8
 
 
 
-
 git clone https://github.com/MrDoggie/video-feature-for-kaldi.git 
 mv video-feature-for-kaldi/* .
 rm -rf video-feature-for-kaldi/
@@ -64,12 +70,6 @@ sudo echo "deb http://dk.archive.ubuntu.com/ubuntu/ trusty main universe1
 deb http://dk.archive.ubuntu.com/ubuntu/ trusty-updates main universe" >> /etc/apt/sources.list
 sudo apt-get -y update
 
-# You have to use g++-5 otherwise you wont be able to install caffe
-sudo apt-get -y install g++-5
-sudo rm -f /usr/bin/gcc
-sudo rm -f /usr/bin/g++
-sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
-sudo ln -s /usr/bin/g++-5 /usr/bin/g++
 
 sudo apt-get -y install linux-headers-$(uname -r);
 sudo apt-get -y install flac libflac-dev; 
@@ -99,11 +99,10 @@ sudo ln -s /usr/bin/g++-4.9 /usr/local/cuda/bin/g++
 
 sudo apt-get install zip
 sudo apt-get install git virtualenv python-dev ocl-icd-opencl-dev libopencv-dev python-opencv ffmpeg
-chmod 777 data_processing.sh
-chmod 777 cutSilence.sh
 
-git clone https://github.com/dthpham/butterflow.git
-cd butterflow; sudo python setup.py install; cd ..
+
+# git clone https://github.com/dthpham/butterflow.git
+# cd butterflow; sudo python setup.py install; cd ..
 sudo pip install imutils
 sudo apt-get install build-essential cmake
 sudo apt-get install libgtk-3-dev
@@ -111,10 +110,9 @@ sudo apt-get install libboost-all-dev
 sudo pip install scipy
 sudo pip install scikit-image
 sudo pip install dlib
-sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
-sudo apt-get install --no-install-recommends libboost-all-dev
+
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
-sudo pip install protobuf
+
 
 git clone https://github.com/BVLC/caffe.git
 
@@ -134,3 +132,8 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64/
 
 cd caffe; python scripts/download_model_binary.py models/bvlc_googlenet/; ./data/ilsvrc12/get_ilsvrc_aux.sh; cd ..;
 
+chmod 777 data_processing.sh
+
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] BatchReindexLayerTest/2.TestGradient, where TypeParam = caffe::GPUDevice<float>
+[  FAILED  ] BatchReindexLayerTest/3.TestGradient, where TypeParam = caffe::GPUDevice<double>
