@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# Copyright: Junyi Wang
 # This script is used to extract frames from the cutted videos
 # The frame rate should be 25fps
 
 # The extracted frames will be stored in frames
 mkdir -p frames
 
-for i in `seq 19 34`;
+for i in `seq 1 34`;
 do
 	name='s'$i
 	if [ $i -ne 21 ]
@@ -18,6 +19,7 @@ do
 			# create a dir for each video to store the frames
 			basename=$(echo $file | cut -d "/" -f5 | cut -d "." -f1)
 			mkdir -p frames/$name/$basename
+			# extract all the frames from the video
 			ffmpeg -y -hide_banner -loglevel panic -i $file ./frames/$name/$basename/%d.jpg
 		done
 		echo "Finish extracting frames for $name"

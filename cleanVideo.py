@@ -1,3 +1,5 @@
+# Copyright: Junyi Wang
+
 # This script is used to remove video that has no corresponding audio file and
 # cutting video to the same length as the audio
 # The chime2 dataset is a subset of GRID dataset. Therefore only some audio file is used

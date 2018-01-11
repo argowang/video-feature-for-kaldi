@@ -1,3 +1,10 @@
+# Copyright: Junyi Wang
+# This script uses a pretrained face detector to extract ROI
+# Takes three arguments
+# 1. shape-predictor: a pretrained facial landmark predicator
+# 2. image-Path: path to all images. Notice it is not the path of images, but the folder that contains all images
+# 3. outputPath: where the extracted mouths are going to
+
 # import the necessary packages
 from imutils import face_utils
 import numpy as np
@@ -41,13 +48,14 @@ for baseroot, basedirs, basefiles in os.walk(args["imagePath"]):
 					rect = rects[0]
 					shape = predictor(gray, rect)
 					shape = face_utils.shape_to_np(shape)
-
+					# in the end we only want a gray scale image, therefore overwrite the color image with gray one
+					image = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
 					# extract the ROI mouth area as a seperate image
 					(x, y, w, h) = cv2.boundingRect(np.array([shape[48:68]]))
 					# if (w>h):
-					roi = image[y:y+h, x:x+w]
-					# roi = image[y-w/2+h/2:y+h/2+w/2, x:x+w]
-					roi = imutils.resize(roi, width=50, inter=cv2.INTER_CUBIC)
+					#roi = image[y:y+h, x:x+w]
+					roi = image[y-w/2+h/2:y+h/2+w/2, x:x+w]
+					roi = imutils.resize(roi, width=64, inter=cv2.INTER_CUBIC)
 					border_top = (TARGET_SIZE-h)/2
 					border_left = (TARGET_SIZE-w)/2
 

@@ -1,3 +1,8 @@
+# Copyright: Junyi Wang
+
+# similar to audioFrames.py
+# This script calculate the duration of the audio instead
+# Takes a wav file as input
 import wave
 import contextlib
 import sys

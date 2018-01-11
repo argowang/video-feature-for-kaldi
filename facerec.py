@@ -38,9 +38,9 @@ for root, dirs, files in os.walk(args["imagePath"]):
 		# extract the ROI mouth area as a seperate image
 		(x, y, w, h) = cv2.boundingRect(np.array([shape[48:68]]))
 		# if (w>h):
-		roi = image[y:y+h, x:x+w]
-		# roi = image[y-w/2+h/2:y+h/2+w/2, x:x+w]
-		roi = imutils.resize(roi, width=50, inter=cv2.INTER_CUBIC)
+		# roi = image[y:y+h, x:x+w]
+		roi = image[y-w/2+h/2:y+h/2+w/2, x:x+w]
+		roi = imutils.resize(roi, width=64, inter=cv2.INTER_CUBIC)
 		border_top = (TARGET_SIZE-h)/2
 		border_left = (TARGET_SIZE-w)/2
 
@@ -55,7 +55,7 @@ for root, dirs, files in os.walk(args["imagePath"]):
 		# Output
 		path = "./mouth"
 		imageName = os.path.join(path, "mouth_" + os.path.basename(file))
-		# print "Processing: " + imageName
+		print "Processing: " + imageName
 		cv2.imwrite(imageName, roi)
 
 
