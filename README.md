@@ -80,46 +80,6 @@ Argument:
 Duplicate each feature by four times to match the frames of video and audio. Also take care of extra or missing frames.
 Argument: N/A
 
--------------------------------------------------------
-
-# AVSR Training
-This part contains all files related with AVSR system training procedure.
-All the contents in this part are in the myChime2 folder.
-The codes in this part are mainly adopted from the Chime2 in the kaldi toolkit.
-Minor changes are made in the run.sh file to append audio features and video features.
-
-To run this part:
-1. change the WAV_ROOT in the path.sh to the according folder that contains audio data. It needs to be absolute path
-change the KALDI_ROOT to the according folder that contains kaldi toolkit. It needs to be absolute path 
-NOTICE: DO NOT CHANGE VIDEO_ROOT
-2. mkdir -p ./proc/video
-copy the videoFeatures.tar.gz file generated from the data processing part or provided by Junyi to myChime2/proc/video
-tar -xzf ./proc/video/videoFeatures.tar.gz -C ./proc/video
-cp -R ./proc/video/finalbin/* ./proc/video/
-rm -rf ./proc/video/finalbin
-to extract the videoFeatures
-3. go back and make sure everything in the folder is executable (should be set executable by project_prereq.sh)
-4. go to run_all.sh to choose which version do you want to run
-5. ./run_all.sh
-
-Executables:
-
-### run_all.sh
-Higher function that select which features are used in run.sh
-
-### run.sh
-Modified version of myChime2 run.sh
-Remove some process such as filterbank feature extraction
-Add in feature append function
-
-### path.sh
-Set path environment
-
-### cmd.sh
-Set the configuartion
-
-### local/*
-Various scripts that conduct feature processing. Adopted from kaldi toolkit
 
 
 
