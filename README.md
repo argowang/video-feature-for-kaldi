@@ -11,8 +11,6 @@ Contain all the packages and environment configurations that need to be set befo
 I highly recommend you run the script mannually line by line to avoid any error
 You must run the script in the right order to avoid dependency problem
 
-Notice:
-Although I've checked that dirs used in the script are relative paths, it is the safest to put everything on the home directory to avoid tiny chance of malbehavior.
 
 # Data Processing
 This part contains all files related with data processing procedure.
